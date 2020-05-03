@@ -1,5 +1,5 @@
 import { Component, ReactNode, createElement } from "react";
-import { NativeModules, Platform, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
+import { ImageStyle, NativeModules, Platform, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { DarkModeEnum } from "../../typings/NativeBackButtonProps";
 
@@ -21,14 +21,24 @@ const defaultStyle: CustomStyle = {
     androidContainer: {
         flexDirection: "row",
         alignItems: "center",
-        paddingLeft: 12
+        paddingLeft: 15
     },
-    darkImage: {
+    androidDarkImage: {
+        tintColor: "#f3f3f3",
+        width: 24,
+        height: 24
+    },
+    androidLightImage: {
+        tintColor: "#0d0d0d",
+        width: 24,
+        height: 24
+    },
+    iosDarkImage: {
         tintColor: "#f3f3f3",
         width: 28,
         height: 31
     },
-    lightImage: {
+    iosLightImage: {
         tintColor: "#0d0d0d",
         width: 28,
         height: 31
@@ -93,10 +103,19 @@ export class BackButton extends Component<BackButtonProps> {
 
     renderIcon(componentDarkMode: boolean): ReactNode {
         // Received this bit from Danny Roest (Mendix) and adjusted for dark mode
+        let svgStyle: ImageStyle;
+        let fillColor: string;
+        if ((Platform.OS === "android")) {
+            svgStyle = (componentDarkMode) ? this.styles.androidDarkImage : this.styles.androidLightImage;
+            fillColor = (componentDarkMode) ? this.styles.androidDarkImage.tintColor! : this.styles.androidLightImage.tintColor!;
+        } else {
+            svgStyle = (componentDarkMode) ? this.styles.iosDarkImage : this.styles.iosLightImage;
+            fillColor = (componentDarkMode) ? this.styles.iosDarkImage.tintColor! : this.styles.iosLightImage.tintColor!;
+        }
         return (
             <Svg
-                fill={(componentDarkMode) ? this.styles.darkImage.tintColor : this.styles.lightImage.tintColor}
-                style={(componentDarkMode) ? this.styles.darkImage : this.styles.lightImage}
+                fill={fillColor}
+                style={svgStyle}
                 viewBox="0 0 512 512">
                 {Platform.select({
                     ios: (

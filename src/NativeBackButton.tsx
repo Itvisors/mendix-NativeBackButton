@@ -8,8 +8,10 @@ import { ValueStatus } from "mendix";
 export interface CustomStyle extends Style {
     iosContainer: ViewStyle;
     androidContainer: ViewStyle;
-    darkImage: ImageStyle;
-    lightImage: ImageStyle;
+    iosDarkImage: ImageStyle;
+    iosLightImage: ImageStyle;
+    androidDarkImage: ImageStyle;
+    androidLightImage: ImageStyle;
     darkCaption: TextStyle;
     lightCaption: TextStyle;
 }
