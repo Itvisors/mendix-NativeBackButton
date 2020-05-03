@@ -8,9 +8,22 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="sampleText" type="string" required="false">
-                <caption>Default value</caption>
-                <description>Sample text input</description>
+            <property key="caption" type="textTemplate" required="false">
+                <caption>Caption</caption>
+                <description>The button caption, optional. (Not visible on Android)</description>
+            </property>
+            <property key="darkMode" type="enumeration" defaultValue="device">
+                <caption>Dark mode</caption>
+                <description>Choose whether the widget will follow the device dark mode setting or a fixed setting.</description>
+                <enumerationValues>
+                    <enumerationValue key="device">Device</enumerationValue>
+                    <enumerationValue key="dark">Dark</enumerationValue>
+                    <enumerationValue key="light">Light</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="onClickAction" type="action" required="false">
+                <caption>On click action</caption>
+                <description>Action to trigger when button is clicked</description>
             </property>
         </propertyGroup>
     </properties>

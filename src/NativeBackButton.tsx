@@ -1,21 +1,43 @@
 import { Component, ReactNode, createElement } from "react";
-import { TextStyle, ViewStyle } from "react-native";
-import { HelloWorldSample } from "./components/HelloWorldSample";
+import { TextStyle, ViewStyle, ImageStyle } from "react-native";
+import { BackButton } from "./components/BackButton";
 import { NativeBackButtonProps } from "../typings/NativeBackButtonProps";
 import { Style } from "./utils/common";
+import { ValueStatus } from "mendix";
 
 export interface CustomStyle extends Style {
-    container: ViewStyle;
-    label: TextStyle;
+    iosContainer: ViewStyle;
+    androidContainer: ViewStyle;
+    darkImage: ImageStyle;
+    lightImage: ImageStyle;
+    darkCaption: TextStyle;
+    lightCaption: TextStyle;
 }
 
 export class NativeBackButton extends Component<NativeBackButtonProps<CustomStyle>> {
+    constructor(props: NativeBackButtonProps<CustomStyle>) {
+        super(props);
+
+        this.onClick = this.onClick.bind(this);
+    }
+
     render(): ReactNode {
+        const { caption } = this.props;
+        if (!caption || caption.status != ValueStatus.Available) {
+            return null;
+        }
         return (
-            <HelloWorldSample
-                sampleText={this.props.sampleText ? this.props.sampleText : "World"}
+            <BackButton
+                caption={caption.value}
+                darkMode={this.props.darkMode}
                 style={this.props.style}
+                onClick={this.onClick}
             />
         );
+    }
+    onClick() {
+        if (this.props.onClickAction) {
+            this.props.onClickAction.execute();
+        }
     }
 }
