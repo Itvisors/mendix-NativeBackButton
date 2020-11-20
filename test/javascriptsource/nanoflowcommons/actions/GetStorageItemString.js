@@ -29,8 +29,7 @@ export async function GetStorageItemString(key) {
     });
     async function getItem(key) {
         if (navigator && navigator.product === "ReactNative") {
-            const AsyncStorage = require("@react-native-community/async-storage")
-                .default;
+            const AsyncStorage = require("@react-native-community/async-storage").default;
             return AsyncStorage.getItem(key);
         }
         if (window) {

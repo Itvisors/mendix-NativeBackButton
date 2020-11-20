@@ -1,11 +1,11 @@
 //================================== CORE ==================================\\
-
-
+//
+//
 // Base
 export * from "./core/base/flex";
 export * from "./core/base/spacing";
-
-
+//
+//
 // Components
 export * from "./core/widgets/activityindicator";
 export * from "./core/helpers/activityindicator";
@@ -41,6 +41,7 @@ export * from "./core/widgets/progressbar";
 export * from "./core/helpers/progressbar";
 export * from "./core/widgets/progresscircle";
 export * from "./core/helpers/progresscircle";
+export * from "./core/widgets/popupmenu";
 export * from "./core/widgets/qrcode";
 export * from "./core/widgets/rangeslider";
 export * from "./core/helpers/rangeslider";
@@ -53,29 +54,27 @@ export * from "./core/widgets/tabcontainer";
 export * from "./core/helpers/tabcontainer";
 export * from "./core/widgets/textarea";
 export * from "./core/widgets/textbox";
+export * from "./core/helpers/textbox";
 export * from "./core/widgets/togglebuttons";
 export * from "./core/widgets/typography";
 export * from "./core/helpers/typography";
 export * from "./core/widgets/videoplayer";
 export * from "./core/widgets/webview";
 export * from "./core/helpers/helperclasses";
-
-
+//
+//
 //================================= CUSTOM =================================\\
-
+//
 // Layouts
 export * from "./ui_resources/atlas_ui_resources/layouts/layout";
-
-
+//
+//
 // Page Templates
 export * from "./ui_resources/atlas_ui_resources/pagetemplates/page";
 export * from "./ui_resources/atlas_ui_resources/pagetemplates/maps";
 export * from "./ui_resources/atlas_ui_resources/pagetemplates/inspectiondetails";
-
-
+//
+//
 // Building blocks
 export * from "./ui_resources/atlas_ui_resources/buildingblocks/card";
 export * from "./ui_resources/atlas_ui_resources/buildingblocks/header";
-
-
-

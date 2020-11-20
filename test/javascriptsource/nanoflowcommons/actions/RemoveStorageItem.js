@@ -23,8 +23,7 @@ export async function RemoveStorageItem(key) {
     return removeItem(key).then(() => true);
     function removeItem(key) {
         if (navigator && navigator.product === "ReactNative") {
-            const AsyncStorage = require("@react-native-community/async-storage")
-                .default;
+            const AsyncStorage = require("@react-native-community/async-storage").default;
             return AsyncStorage.removeItem(key);
         }
         if (window) {

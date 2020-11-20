@@ -1,23 +1,21 @@
-/* ==========================================================================
+/*
+==========================================================================
     Page
 
-========================================================================== */
-
-
+==========================================================================
+*/
 //== Elements
 //-------------------------------------------------------------------------------------------------------------------//
-
-
+//
 //== Variations
 //-------------------------------------------------------------------------------------------------------------------//
 //
-
 export const pageHeaderBorderNone = {
     sidebar: {
-        // All ViewStyle properties are allowed
+    // All ViewStyle properties are allowed
     },
     statusBar: {
-        // Only backgroundColor and barStyle are allowed
+    // Only backgroundColor and barStyle are allowed
     },
     header: {
         container: {
@@ -26,16 +24,16 @@ export const pageHeaderBorderNone = {
             borderBottomWidth: undefined,
         },
         title: {
-            // All TextStyle properties are allowed
+        // All TextStyle properties are allowed
         },
         backButtonText: {
-            // All TextStyle properties are allowed
+        // All TextStyle properties are allowed
         },
         backButtonIcon: {
-            // All ImageStyle properties are allowed
+        // All ImageStyle properties are allowed
         },
     },
     container: {
-        // All ViewStyle properties are allowed
+    // All ViewStyle properties are allowed
     },
 };

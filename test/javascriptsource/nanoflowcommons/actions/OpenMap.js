@@ -30,7 +30,7 @@ export async function OpenMap(location) {
         const Platform = require("react-native").Platform;
         const url = Platform.select({
             ios: iosUrl,
-            android: androidUrl
+            default: androidUrl
         });
         return Linking.canOpenURL(url).then(supported => {
             if (!supported) {

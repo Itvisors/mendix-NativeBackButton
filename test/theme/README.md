@@ -3,6 +3,11 @@
 Mendix Atlas UI is the foundation of making beautiful apps with Mendix. For more information about the framework go to
 [here](https://atlas.mendix.com/).
 
+### Useful tools
+- [Compile SCSS to CSS with Calypso](https://docs.mendix.com/howto/front-end/calypso)
+- [Visually update the design properties for web and native](https://jeltemx.github.io/mendix-dpt/)
+- [Inspect and update styles in the Make it Native app with the React Native Debugger](https://docs.mendix.com/howto/mobile/native-debug)
+
 #### Structure
 
 Mendix is capable of creating beautiful and user-friendly UI. Our Atlas UI framework demonstrates some of its
@@ -12,20 +17,22 @@ possibilities. Here you will find a basic overview of our framework.
 theme/
 ├── styles/
 |   ├── native/
-|       ├── app/
-|       |   ├── _custom-variables.js
-|       |   └── _custom.js
-|       ├── core/
-|       |   ├── base/
-|       |   ├── helpers/
-|       |   ├── widgets/
-|       |   | _variables.js
-|       |   └── manifest.json
-|       ├── ui_resources/
-|       |   └── atlas_ui_resources/
-|       |       ├── buildingblocks/
-|       |       └── layouts/
-|       └── main.js
+|   |   ├── ts/     // Will not be in the Atlas UI Resources module
+|   |   ├── js/
+|   |       ├── app/
+|   |       |   ├── _custom-variables.js
+|   |       |   └── _custom.js
+|   |       ├── core/
+|   |       |   ├── base/
+|   |       |   ├── helpers/
+|   |       |   ├── widgets/
+|   |       |   | _variables.js
+|   |       |   └── manifest.json
+|   |       ├── ui_resources/
+|   |       |   └── atlas_ui_resources/
+|   |       |       ├── buildingblocks/
+|   |       |       └── layouts/
+|   |       └── main.js
 |   └── web/
 |       ├── css/
 |       │   ├── * all output files

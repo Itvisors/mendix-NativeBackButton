@@ -1,10 +1,11 @@
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+/*
 
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
+
+*/
 //== Flex layout
 export const flexMain = {
     container: {
@@ -43,13 +44,6 @@ export const flexWrap = {
     container: {
         // flexWrap controls whether children can wrap around after they hit the end of a flex container.
         flexWrap: "wrap",
-    },
-};
-
-export const childrenCenter = {
-    container: {
-        ...justifyContentCenter,
-        ...alignChildrenCenter,
     },
 };
 export const justifyContentStart = {
@@ -126,7 +120,13 @@ export const alignChildrenBaseline = {
     container: {
         // alignContent aligns children in the cross direction.
         // For example, if children are flowing vertically, alignContent controls how they align horizontally.
-        alignContent: "baseline",
+        alignItems: "baseline",
+    },
+};
+export const childrenCenter = {
+    container: {
+        ...justifyContentCenter.container,
+        ...alignChildrenCenter.container,
     },
 };
 export const alignContentStart = {

@@ -26,6 +26,9 @@ import { Big } from "big.js";
  */
 export async function GetCurrentLocation(timeout, maximumAge, highAccuracy) {
 	// BEGIN USER CODE
+    if (navigator && navigator.product === "ReactNative" && !navigator.geolocation) {
+        navigator.geolocation = require("@react-native-community/geolocation");
+    }
     return new Promise((resolve, reject) => {
         const options = getOptions();
         navigator.geolocation.getCurrentPosition(onSuccess, onError, options);

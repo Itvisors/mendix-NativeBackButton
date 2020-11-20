@@ -1,14 +1,13 @@
 import { brand, button, contrast, font } from "../variables";
-import merge                             from "./_functions/mergeobjects";
+import merge from "./_functions/mergeobjects";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-/* ==========================================================================
+==========================================================================
     Button
 
 //== Design Properties
@@ -75,7 +74,7 @@ export const btnPrimaryInversed = {
         color: button.primary.backgroundColor,
     },
 };
-
+//
 //== Extra Classes
 //## Helper classes to change the look and feel of the widget
 //-------------------------------------------------------------------------------------------------------------------//
@@ -91,7 +90,7 @@ export const btnSecondaryInversed = {
         color: button.secondary.inversedColor,
     },
 };
-
+//
 // Button Icon Only
 export const btnIcon = {
     container: {
@@ -137,7 +136,7 @@ export const btnIconWhite = merge(btnIcon, {
         color: "#FFF",
     },
 });
-
+//
 export const btnIconGrayRounded = {
     container: {
         height: 80,
@@ -155,7 +154,7 @@ export const btnIconGrayRounded = {
         fontSize: 0,
     },
 };
-
+//
 // Round Button Icon With Background
 export const btnIconPrimaryBackground = {
     container: {
@@ -174,8 +173,8 @@ export const btnIconPrimaryBackground = {
         color: button.primary.color,
     },
 };
-
-
+//
+//
 // Text only
 export const btnAsText = {
     container: {
@@ -189,7 +188,6 @@ export const btnAsText = {
     },
     icon: {
         color: brand.primary,
-        fontWeight: font.weightSemiBold,
         size: button.fontSizeIcon,
     },
     caption: {
@@ -198,7 +196,7 @@ export const btnAsText = {
         fontSize: button.fontSize,
     },
 };
-
+//
 // Button sizes
 export const btnLarge = {
     icon: {

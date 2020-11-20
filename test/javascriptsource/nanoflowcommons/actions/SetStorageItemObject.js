@@ -28,8 +28,7 @@ export async function SetStorageItemObject(key, value) {
     return setItem(key, JSON.stringify(serializedObject));
     function setItem(key, value) {
         if (navigator && navigator.product === "ReactNative") {
-            const AsyncStorage = require("@react-native-community/async-storage")
-                .default;
+            const AsyncStorage = require("@react-native-community/async-storage").default;
             return AsyncStorage.setItem(key, value);
         }
         if (window) {

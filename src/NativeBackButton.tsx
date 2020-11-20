@@ -25,7 +25,7 @@ export class NativeBackButton extends Component<NativeBackButtonProps<CustomStyl
 
     render(): ReactNode {
         const { caption } = this.props;
-        if (!caption || caption.status != ValueStatus.Available) {
+        if (!caption || caption.status !== ValueStatus.Available) {
             return null;
         }
         return (
@@ -37,7 +37,7 @@ export class NativeBackButton extends Component<NativeBackButtonProps<CustomStyl
             />
         );
     }
-    onClick() {
+    onClick(): void {
         if (this.props.onClickAction) {
             this.props.onClickAction.execute();
         }

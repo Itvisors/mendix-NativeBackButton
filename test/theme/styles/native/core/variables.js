@@ -1,17 +1,17 @@
-import { Platform }                                    from "react-native";
-import * as custom                                     from "../app/custom-variables";
-import adjustFont, { height, width }                   from "./helpers/_functions/adjustfont";
-import { setColorBasedOnBackground, setContrastScale } from "./helpers/_functions/convertcolors";
-import { anyColorToRgbString }                         from "./helpers/_functions/convertcolors.js";
-import merge                                           from "./helpers/_functions/mergeobjects";
-
+import { Platform } from "react-native";
+import * as custom from "../app/custom-variables";
+import adjustFont, { height, width } from "./helpers/_functions/adjustfont";
+import { anyColorToRgbString, setColorBasedOnBackground, setContrastScale } from "./helpers/_functions/convertcolors";
+import merge from "./helpers/_functions/mergeobjects";
+//
+//
 //== Global variables
 //## Variables to be used during styling
 //-------------------------------------------------------------------------------------------------------------------//
 // System defined read-only values
 export const deviceHeight = height;
 export const deviceWidth = width;
-
+//
 // Brand Style
 let brand = {
     primary: "#0595DB",
@@ -24,7 +24,8 @@ let brand = {
     dangerLight: `rgba(${anyColorToRgbString("#ed1c24")}, 0.14)`,
 };
 brand = merge(brand, custom.brand || {});
-
+//
+// Background colors
 let background = {
     primary: "#FFF",
     secondary: setContrastScale(0.03, "#FFF"),
@@ -35,7 +36,7 @@ let background = {
     brandDanger: brand.danger,
 };
 background = merge(background, custom.background || {});
-
+//
 // Contrast (Gray) colors based on background.primary
 let contrast = {
     highest: setContrastScale(0.95, background.primary),
@@ -47,7 +48,7 @@ let contrast = {
     lowest: setContrastScale(0.05, background.primary),
 };
 contrast = merge(contrast, custom.contrast || {});
-
+//
 // Border Style
 let border = {
     color: setContrastScale(0.17, background.primary),
@@ -55,7 +56,7 @@ let border = {
     radius: 5,
 };
 border = merge(border, custom.border || {});
-
+//
 // Font Styles
 let font = {
     size: adjustFont(14),
@@ -68,14 +69,16 @@ let font = {
     sizeH5: adjustFont(14),
     sizeH6: adjustFont(12),
     color: setColorBasedOnBackground(background.primary),
-    weightLight: "100",  // Only supported on iOS, will be 'Normal' on Android
+    colorDisabled: "#9DA1A8",
+    labelColorDisabled: "#474E5C",
+    weightLight: "100",
     weightNormal: "normal",
-    weightSemiBold: "600", // Only supported on iOS, will be 'Bold' on Android
+    weightSemiBold: "600",
     weightBold: "bold",
     family: Platform.select({ ios: "System", android: "normal" }),
 };
 font = merge(font, custom.font || {});
-
+//
 // Spacing
 let spacing = {
     smallest: 5,
@@ -87,7 +90,7 @@ let spacing = {
     largest: 40,
 };
 spacing = merge(spacing, custom.spacing || {});
-
+//
 // Button Styles
 let button = {
     fontSize: font.sizeSmall,
@@ -98,7 +101,6 @@ let button = {
     borderRadius: border.radius,
     paddingVertical: spacing.smaller,
     paddingHorizontal: spacing.regular,
-
     header: {
         color: contrast.highest,
         borderColor: "transparent",
@@ -110,8 +112,11 @@ let button = {
     },
     primary: {
         color: "#FFF",
+        colorDisabled: font.colorDisabled,
         borderColor: brand.primary,
+        borderColorDisabled: border.color,
         backgroundColor: brand.primary,
+        backgroundColorDisabled: border.color,
     },
     secondary: {
         color: brand.primary,
@@ -136,33 +141,35 @@ let button = {
     },
 };
 button = merge(button, custom.button || {});
-
+//
 //Input Styles
 let input = {
     // Colors
     color: font.color,
+    colorDisabled: font.colorDisabled,
     errorColor: brand.danger,
     labelColor: font.color,
+    labelColorDisabled: font.labelColorDisabled,
     borderColor: contrast.lower,
+    borderColorFocused: brand.primary,
     backgroundColor: background.primary,
-    disabledBackgroundColor: contrast.lowest,
+    backgroundColorDisabled: background.secondary,
     selectionColor: contrast.lower,
     placeholderTextColor: contrast.regular,
     underlineColorAndroid: "transparent",
-
+    inputContainerUnderlayColor: `rgba(${anyColorToRgbString(contrast.low)},0.4)`,
     // Sizes
     fontSize: font.size,
     fontFamily: font.family,
     borderWidth: border.width,
     borderRadius: border.radius,
-
     // Alignment
     textAlign: "left",
     paddingHorizontal: spacing.smaller,
     paddingVertical: spacing.small,
 };
 input = merge(input, custom.input || {});
-
+//
 // Navigation Styles
 let navigation = {
     statusBar: {
@@ -188,59 +195,22 @@ let navigation = {
         activityIndicatorColor: font.color,
         backgroundColor: `rgba(0, 0, 0, 0.5)`,
         containerBackgroundColor: background.secondary,
-        shadowColor: "#000", // Only for iOS
         fontSize: font.size,
+        borderRadius: border.radius,
+        elevation: 1.5,
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
     },
 };
 navigation = merge(navigation, custom.navigation || {});
-
-// Tabcontainer Styles
-let tabcontainer = {
-    tabBar: {
-        pressColor: contrast.lower,
-        backgroundColor: background.primary,
-    },
-    indicator: {
-        backgroundColor: brand.primary,
-        height: Platform.select({ ios: 2, android: 2 }),
-    },
-    label: {
-        color: contrast.highest,
-        fontWeight: font.weightBold,
-        textTransform: "uppercase",
-    },
-    activeLabel: {
-        color: brand.primary,
-        fontWeight: font.weightBold,
-        textTransform: "uppercase",
-    },
-};
-tabcontainer = merge(tabcontainer, custom.tabcontainer || {});
-
-// Listview Styles
-let listview = {
-    border: {
-        color: border.color,
-        width: border.width,
-    },
-};
-listview = merge(listview, custom.listview || {});
-
-// Layoutgrid Styles
-let layoutgrid = {
-    gutterSize: 15,
-};
-layoutgrid = merge(layoutgrid, custom.layoutgrid || {});
-
-//## Pluggable Widgets
-//-------------------------------------------------------------------------------------------------------------------//
+//
 // Badge Styles
 let badge = {
     fontWeight: font.weightBold,
     borderRadius: 30,
     paddingVertical: 3,
     paddingHorizontal: spacing.smaller,
-
     default: {
         color: contrast.higher,
         backgroundColor: contrast.lower,
@@ -263,19 +233,55 @@ let badge = {
     },
 };
 badge = merge(badge, custom.badge || {});
-
-export {
-    brand,
-    background,
-    border,
-    contrast,
-    font,
-    spacing,
-    button,
-    input,
-    navigation,
-    tabcontainer,
-    listview,
-    layoutgrid,
-    badge,
+//
+// Tabcontainer Styles
+let tabContainer = {
+    tabBar: {
+        pressColor: contrast.lower,
+        backgroundColor: background.primary,
+    },
+    indicator: {
+        backgroundColor: brand.primary,
+        height: Platform.select({ ios: 2, android: 2 }),
+    },
+    label: {
+        color: contrast.highest,
+        fontWeight: font.weightBold,
+        textTransform: "uppercase",
+    },
+    activeLabel: {
+        color: brand.primary,
+        fontWeight: font.weightBold,
+        textTransform: "uppercase",
+    },
+    badgeContainer: {
+        borderRadius: badge.borderRadius,
+        backgroundColor: badge.default.backgroundColor,
+        paddingVertical: badge.paddingVertical,
+        paddingHorizontal: badge.paddingHorizontal,
+        marginLeft: 8
+    },
+    badgeCaption: {
+        fontSize: font.size,
+        color: badge.default.color,
+        fontWeight: badge.fontWeight,
+    }
 };
+tabContainer = merge(tabContainer, custom.tabContainer || {});
+//
+// Listview Styles
+let listView = {
+    border: {
+        color: border.color,
+        width: border.width,
+    },
+};
+listView = merge(listView, custom.listView || {});
+//
+// Layoutgrid Styles
+let layoutGrid = {
+    gutterSize: 15,
+};
+layoutGrid = merge(layoutGrid, custom.layoutGrid || {});
+//
+export { brand, background, border, contrast, font, spacing, button, input, navigation, tabContainer, listView, layoutGrid, badge, };

@@ -1,18 +1,16 @@
-import { border, font, navigation, spacing } from "../variables";
+import { font, navigation, spacing } from "../variables";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-/* ==========================================================================
+==========================================================================
     TopBar / BottomBar / ProgressOverlay
 
     Default Class For Mendix TopBar, BottomBar and ProgressOverlay
 ========================================================================== */
-
 export const navigationStyle = {
     bottomBar: {
         container: {
@@ -24,7 +22,6 @@ export const navigationStyle = {
             color: navigation.bottomBar.color,
             fontFamily: font.family,
             fontSize: navigation.bottomBar.fontSize,
-
         },
         selectedLabel: {
             // All TextStyle properties are allowed
@@ -53,16 +50,15 @@ export const navigationStyle = {
             backgroundColor: navigation.progressOverlay.containerBackgroundColor,
             paddingHorizontal: spacing.largest,
             paddingVertical: spacing.large,
-            borderRadius: border.radius,
-            elevation: 1.5,
+            borderRadius: navigation.progressOverlay.borderRadius,
+            elevation: navigation.progressOverlay.elevation,
             shadowColor: navigation.progressOverlay.shadowColor,
-            shadowOpacity: 0.1,
-            shadowRadius: 10,
+            shadowOpacity: navigation.progressOverlay.shadowOpacity,
+            shadowRadius: navigation.progressOverlay.shadowRadius,
             shadowOffset: {
                 width: 0,
                 height: 2,
             },
-
         },
         activityIndicator: {
             // Color, Size & All ViewStyle properties are allowed
