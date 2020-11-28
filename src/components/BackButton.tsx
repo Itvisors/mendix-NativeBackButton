@@ -1,13 +1,5 @@
 import { Component, ReactNode, createElement } from "react";
-import {
-    ImageStyle,
-    NativeModules,
-    Platform,
-    Text,
-    TouchableNativeFeedback,
-    TouchableOpacity,
-    View
-} from "react-native";
+import { ImageStyle, NativeModules, Platform, Pressable, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { DarkModeEnum } from "../../typings/NativeBackButtonProps";
 
@@ -61,9 +53,14 @@ const defaultStyle: CustomStyle = {
     }
 };
 
+// Mendix 9 is different!
+// Safely check if Appearance API is available in this version of React Native
+const Appearance = require("react-native").Appearance;
 const deviceDarkMode =
     NativeModules && NativeModules.RNDarkMode && NativeModules.RNDarkMode.initialMode
         ? NativeModules.RNDarkMode.initialMode === "dark"
+        : Appearance
+        ? Appearance.getColorScheme() === "dark"
         : false;
 
 export class BackButton extends Component<BackButtonProps> {
@@ -83,43 +80,31 @@ export class BackButton extends Component<BackButtonProps> {
             default:
                 componentDarkMode = deviceDarkMode;
         }
-        const isAndroid = Platform.OS === "android";
-        if (isAndroid) {
-            return (
-                <TouchableNativeFeedback onPress={() => this.props.onClick()}>
-                    {this.renderView(componentDarkMode)}
-                </TouchableNativeFeedback>
-            );
-        } else {
-            return (
-                <TouchableOpacity onPress={() => this.props.onClick()}>
-                    {this.renderView(componentDarkMode)}
-                </TouchableOpacity>
-            );
-        }
-    }
-
-    renderView(componentDarkMode: boolean): ReactNode {
         return (
-            <View style={Platform.OS === "android" ? this.styles.androidContainer : this.styles.iosContainer}>
-                {this.renderIcon(componentDarkMode)}
-                {this.renderCaption(componentDarkMode)}
-            </View>
+            <Pressable onPress={() => this.props.onClick()}>
+                <View style={Platform.OS === "android" ? this.styles.androidContainer : this.styles.iosContainer}>
+                    {this.renderIcon(componentDarkMode)}
+                    {this.renderCaption(componentDarkMode)}
+                </View>
+            </Pressable>
         );
     }
 
     renderIcon(componentDarkMode: boolean): ReactNode {
         // Received this bit from Danny Roest (Mendix) and adjusted for dark mode
+        // For RN 0.63, the types changed a little, so the tintColor must be cast to a string.
         let svgStyle: ImageStyle;
         let fillColor: string;
         if (Platform.OS === "android") {
             svgStyle = componentDarkMode ? this.styles.androidDarkImage : this.styles.androidLightImage;
             fillColor = componentDarkMode
-                ? this.styles.androidDarkImage.tintColor!
-                : this.styles.androidLightImage.tintColor!;
+                ? (this.styles.androidDarkImage.tintColor! as string)
+                : (this.styles.androidLightImage.tintColor! as string);
         } else {
             svgStyle = componentDarkMode ? this.styles.iosDarkImage : this.styles.iosLightImage;
-            fillColor = componentDarkMode ? this.styles.iosDarkImage.tintColor! : this.styles.iosLightImage.tintColor!;
+            fillColor = componentDarkMode
+                ? (this.styles.iosDarkImage.tintColor! as string)
+                : (this.styles.iosLightImage.tintColor! as string);
         }
         return (
             <Svg fill={fillColor} style={svgStyle} viewBox="0 0 512 512">
