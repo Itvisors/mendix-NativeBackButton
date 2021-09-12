@@ -25,6 +25,7 @@ public class QueuedTask
 		QueueId("QueueId"),
 		QueueName("QueueName"),
 		MicroflowName("MicroflowName"),
+		UserActionName("UserActionName"),
 		Arguments("Arguments"),
 		XASId("XASId"),
 		ThreadId("ThreadId"),
@@ -311,6 +312,42 @@ public class QueuedTask
 	public final void setMicroflowName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String microflowname)
 	{
 		getMendixObject().setValue(context, MemberNames.MicroflowName.toString(), microflowname);
+	}
+
+	/**
+	 * @return value of UserActionName
+	 */
+	public final java.lang.String getUserActionName()
+	{
+		return getUserActionName(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of UserActionName
+	 */
+	public final java.lang.String getUserActionName(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.UserActionName.toString());
+	}
+
+	/**
+	 * Set value of UserActionName
+	 * @param useractionname
+	 */
+	public final void setUserActionName(java.lang.String useractionname)
+	{
+		setUserActionName(getContext(), useractionname);
+	}
+
+	/**
+	 * Set value of UserActionName
+	 * @param context
+	 * @param useractionname
+	 */
+	public final void setUserActionName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String useractionname)
+	{
+		getMendixObject().setValue(context, MemberNames.UserActionName.toString(), useractionname);
 	}
 
 	/**

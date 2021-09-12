@@ -1,5 +1,5 @@
 import { Component, ReactNode, createElement } from "react";
-import { ImageStyle, NativeModules, Platform, Pressable, Text, View } from "react-native";
+import { Appearance, ImageStyle, Platform, Pressable, Text, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { DarkModeEnum } from "../../typings/NativeBackButtonProps";
 
@@ -55,13 +55,7 @@ const defaultStyle: CustomStyle = {
 
 // Mendix 9 is different!
 // Safely check if Appearance API is available in this version of React Native
-const Appearance = require("react-native").Appearance;
-const deviceDarkMode =
-    NativeModules && NativeModules.RNDarkMode && NativeModules.RNDarkMode.initialMode
-        ? NativeModules.RNDarkMode.initialMode === "dark"
-        : Appearance
-        ? Appearance.getColorScheme() === "dark"
-        : false;
+const deviceDarkMode = Appearance.getColorScheme() === "dark";
 
 export class BackButton extends Component<BackButtonProps> {
     private readonly styles = flattenStyles(defaultStyle, this.props.style);
