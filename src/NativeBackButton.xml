@@ -5,8 +5,7 @@
         xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Native Back Button</name>
     <description>Mendix native back button</description>
-    <icon>iVBORw0KGgoAAAANSUhEUgAAAEEAAABBCAYAAACO98lFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVHhe7dvNKkVRGMbxjVLMDGTITUhGJCXEwJwbcAsy9xFuwZ0YmLgDAwOlKBPK58TH/629a7Us56wd6njW+9SvM7Xes9Zjr3M6lcfj8Xg8X9JXv/ZyJrCOcVzgGDcoJou4x0fgFlMoIkt4QTiAxjkGIR0bwCNSAzDvmIRsbABPSC0+NAfJ5A7gAaOQS7cjENqGXDqVYOwA/ZDKMnJ2gJXhEeQGkNsB5hADkIoN4BmpBYdsB9gAJHdAbgnaESh2BxjJEsztAOkSLP4I5D4HeAmi+OcAL0FIxUsQRV+GcneAX4bglyHI7YB5FF2CQ7hCasExyRK0zCC14FDPl+BP/7Dh+rVT3nACG4ZkxpBTiK9YgWy2YO9yavEh+/e5CsnYkdpFauEx2zXSg9hDzo4oYhCphcfsaMh2hA1iB6mFx6ws/WhA/mh4WZJmEDk7wj5/8LKEP0fU5HfEPrwskXs0vCxr0peuNkfDy7JWREd4WcKORmrhMflLV+7RkL90tXmOWIBkmo5ILTx2Cfu4XzJtynIasskty1lIp1tZ3mEE8vmuLO3LnE0UExvEBs5wjVOs4T/8gO3XY4u2gXg8Hs8fp6o+AZMfE/SOpvPoAAAAAElFTkSuQmCC
-    </icon>
+    <studioProCategory>Buttons</studioProCategory>
     <properties>
         <propertyGroup caption="General">
             <property key="caption" type="textTemplate" required="false">

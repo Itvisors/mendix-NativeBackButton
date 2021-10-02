@@ -26,7 +26,7 @@
     "url": "https://github.com/Marcel Groeneweg/nativebackbutton/issues"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^9.4.3",
+    "@mendix/pluggable-widgets-tools": "^9.5.4",
     "@types/big.js": "^4.0.5",
     "@types/react": "^16.13.1",
     "@types/react-native": "~0.63.3",
