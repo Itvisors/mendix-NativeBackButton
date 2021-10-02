@@ -1,7 +1,7 @@
 {
   "name": "nativebackbutton",
   "widgetName": "NativeBackButton",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Mendix native back button",
   "copyright": "ITvisors 2020",
   "author": "Marcel Groeneweg",
