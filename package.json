@@ -1,7 +1,7 @@
 {
   "name": "nativebackbutton",
   "widgetName": "NativeBackButton",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Mendix native back button",
   "copyright": "ITvisors 2020",
   "author": "Marcel Groeneweg",
@@ -26,7 +26,7 @@
     "url": "https://github.com/Marcel Groeneweg/nativebackbutton/issues"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^9.5.4",
+    "@mendix/pluggable-widgets-tools": "^9.10.0",
     "@types/big.js": "^6.0.2",
     "@types/react": "~17.0.1",
     "@types/react-native": "~0.63.52",

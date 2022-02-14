@@ -3,6 +3,7 @@
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix UI Content Team
  */
+import { CSSProperties } from "react";
 import { ActionValue, DynamicValue } from "mendix";
 
 export type DarkModeEnum = "device" | "dark" | "light";
@@ -16,8 +17,10 @@ export interface NativeBackButtonProps<Style> {
 }
 
 export interface NativeBackButtonPreviewProps {
-    class: string;
+    className: string;
     style: string;
+    styleObject?: CSSProperties;
+    readOnly: boolean;
     caption: string;
     darkMode: DarkModeEnum;
     onClickAction: {} | null;
