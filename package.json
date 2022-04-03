@@ -1,29 +1,25 @@
 {
   "name": "nativebackbutton",
   "widgetName": "NativeBackButton",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Mendix native back button",
   "copyright": "ITvisors 2020",
   "author": "Marcel Groeneweg",
   "engines": {
     "node": ">=12"
   },
+  "license": "Apache-2.0",
   "config": {
     "projectPath": "./test/"
   },
   "packagePath": "itvisors",
   "scripts": {
-    "start": "npm run dev",
+    "start": "pluggable-widgets-tools start:native",
     "build": "pluggable-widgets-tools build:native",
-    "dev": "pluggable-widgets-tools start:native",
     "lint": "pluggable-widgets-tools lint",
     "lint:fix": "pluggable-widgets-tools lint:fix",
     "prerelease": "npm run lint",
     "release": "pluggable-widgets-tools release:native"
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/Marcel Groeneweg/nativebackbutton/issues"
   },
   "devDependencies": {
     "@mendix/pluggable-widgets-tools": "^9.10.0",

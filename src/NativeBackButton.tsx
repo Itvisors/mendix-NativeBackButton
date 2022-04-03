@@ -1,45 +1,20 @@
-import { Component, ReactNode, createElement } from "react";
-import { TextStyle, ViewStyle, ImageStyle } from "react-native";
+import { ReactElement, createElement, useCallback } from "react";
+
 import { BackButton } from "./components/BackButton";
+import { CustomStyle } from "./ui/styles";
 import { NativeBackButtonProps } from "../typings/NativeBackButtonProps";
-import { Style } from "./utils/common";
-import { ValueStatus } from "mendix";
 
-export interface CustomStyle extends Style {
-    iosContainer: ViewStyle;
-    androidContainer: ViewStyle;
-    iosDarkImage: ImageStyle;
-    iosLightImage: ImageStyle;
-    androidDarkImage: ImageStyle;
-    androidLightImage: ImageStyle;
-    darkCaption: TextStyle;
-    lightCaption: TextStyle;
-}
-
-export class NativeBackButton extends Component<NativeBackButtonProps<CustomStyle>> {
-    constructor(props: NativeBackButtonProps<CustomStyle>) {
-        super(props);
-
-        this.onClick = this.onClick.bind(this);
-    }
-
-    render(): ReactNode {
-        const { caption } = this.props;
-        if (!caption || caption.status !== ValueStatus.Available) {
-            return null;
+export function NativeBackButton({
+    caption,
+    darkMode,
+    style,
+    onClickAction
+}: NativeBackButtonProps<CustomStyle>): ReactElement {
+    const onClickHandler = useCallback(() => {
+        if (onClickAction && onClickAction.canExecute && !onClickAction.isExecuting) {
+            onClickAction.execute();
         }
-        return (
-            <BackButton
-                caption={caption.value}
-                darkMode={this.props.darkMode}
-                style={this.props.style}
-                onClick={this.onClick}
-            />
-        );
-    }
-    onClick(): void {
-        if (this.props.onClickAction) {
-            this.props.onClickAction.execute();
-        }
-    }
+    }, [onClickAction]);
+
+    return <BackButton darkMode={darkMode} style={style} onClick={onClickHandler} caption={caption?.value} />;
 }
