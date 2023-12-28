@@ -26,5 +26,19 @@
                 <description>Action to trigger when button is clicked</description>
             </property>
         </propertyGroup>
+        <propertyGroup caption="Accessibility">
+            <property key="a11yEnabled" type="boolean" defaultValue="false">
+                <caption>accessible</caption>
+                <description></description>
+            </property>
+            <property key="a11yLabel" type="textTemplate" required="false">
+                <caption>Screen reader caption</caption>
+                <description></description>
+            </property>
+            <property key="a11yHint" type="textTemplate" required="false">
+                <caption>Screen reader hint</caption>
+                <description></description>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>

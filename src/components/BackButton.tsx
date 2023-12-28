@@ -10,12 +10,25 @@ export interface BackButtonProps {
     darkMode: DarkModeEnum;
     onClick: () => void;
     style: CustomStyle[];
+    widgetName: string;
+    a11yEnabled: boolean;
+    a11yLabel: string | undefined;
+    a11yHint: string | undefined;
 }
 
 // Get current device dark mode
 const deviceDarkMode = Appearance.getColorScheme() === "dark";
 
-export function BackButton({ caption, darkMode, onClick, style }: BackButtonProps): ReactElement {
+export function BackButton({
+    caption,
+    darkMode,
+    onClick,
+    style,
+    widgetName,
+    a11yEnabled,
+    a11yLabel,
+    a11yHint
+}: BackButtonProps): ReactElement {
     const styles = mergeNativeStyles(defaultStyle, style);
 
     let componentDarkMode = false;
@@ -40,8 +53,12 @@ export function BackButton({ caption, darkMode, onClick, style }: BackButtonProp
         if (!caption) {
             return null;
         }
-        return <Text style={componentDarkMode ? styles.darkCaption : styles.lightCaption}>{caption}</Text>;
-    }, [styles, caption, componentDarkMode]);
+        return (
+            <Text style={componentDarkMode ? styles.darkCaption : styles.lightCaption} testID={`${widgetName}$caption`}>
+                {caption}
+            </Text>
+        );
+    }, [caption, componentDarkMode, styles, widgetName]);
 
     const renderIcon = useMemo(() => {
         // Received this bit from Danny Roest (Mendix) and adjusted for dark mode
@@ -60,7 +77,7 @@ export function BackButton({ caption, darkMode, onClick, style }: BackButtonProp
                 : (styles.iosLightImage.tintColor! as string);
         }
         return (
-            <Svg fill={fillColor} style={svgStyle} viewBox="0 0 512 512">
+            <Svg fill={fillColor} style={svgStyle} viewBox="0 0 512 512" testID={`${widgetName}$icon`}>
                 {Platform.select({
                     ios: (
                         <Path d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z" />
@@ -71,10 +88,16 @@ export function BackButton({ caption, darkMode, onClick, style }: BackButtonProp
                 })}
             </Svg>
         );
-    }, [styles, componentDarkMode]);
+    }, [styles, componentDarkMode, widgetName]);
 
     return (
-        <Pressable onPress={onClick}>
+        <Pressable
+            onPress={onClick}
+            accessible={a11yEnabled}
+            accessibilityHint={a11yHint}
+            accessibilityLabel={a11yLabel}
+            testID={widgetName}
+        >
             <View style={Platform.OS === "android" ? styles.androidContainer : styles.iosContainer}>
                 {renderIcon}
                 {renderCaption}
