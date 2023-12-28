@@ -1,4 +1,5 @@
 import { NativeBackButtonPreviewProps } from "../typings/NativeBackButtonProps";
+import { hidePropertyIn } from "@mendix/pluggable-widgets-tools";
 
 type Properties = PropertyGroup[];
 
@@ -33,11 +34,12 @@ type ObjectProperties = {
 
 export function getProperties(_values: NativeBackButtonPreviewProps, defaultProperties: Properties): Properties {
     // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
-    /* Example
-    if (values.myProperty === "custom") {
-        delete defaultProperties.properties.myOtherProperty;
+
+    if (!_values.a11yEnabled) {
+        hidePropertyIn(defaultProperties, _values, "a11yLabel");
+        hidePropertyIn(defaultProperties, _values, "a11yHint");
     }
-    */
+
     return defaultProperties;
 }
 
