@@ -6,7 +6,6 @@ package administration.proxies.microflows;
 
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public final class Microflows
 {
@@ -91,17 +90,6 @@ public final class Microflows
 	public static void newWebServiceAccount(IContext context)
 	{
 		newWebServiceAccountBuilder().execute(context);
-	}
-	public static com.mendix.core.actionmanagement.MicroflowCallBuilder retrieveTimeZonesBuilder()
-	{
-		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("Administration.RetrieveTimeZones");
-		return builder;
-	}
-
-	public static java.util.List<system.proxies.TimeZone> retrieveTimeZones(IContext context)
-	{
-		Object result = retrieveTimeZonesBuilder().execute(context);
-		return result == null ? null : com.mendix.utils.ListUtils.map((java.util.List<IMendixObject>) result, obj -> system.proxies.TimeZone.initialize(context, obj));
 	}
 	public static com.mendix.core.actionmanagement.MicroflowCallBuilder saveNewAccountBuilder(
 		administration.proxies.AccountPasswordData _accountPasswordData
