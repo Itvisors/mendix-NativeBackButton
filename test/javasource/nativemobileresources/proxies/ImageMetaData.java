@@ -367,13 +367,13 @@ public class ImageMetaData implements com.mendix.systemwideinterfaces.core.IEnti
 		getMendixObject().setValue(context, MemberNames.FileType.toString(), filetype);
 	}
 
-	@Override
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return imageMetaDataMendixObject;
 	}
 
-	@Override
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;

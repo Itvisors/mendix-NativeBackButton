@@ -182,13 +182,13 @@ public class Login implements com.mendix.systemwideinterfaces.core.IEntityProxy
 		getMendixObject().setValue(context, MemberNames.ValidationMessage.toString(), validationmessage);
 	}
 
-	@Override
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return loginMendixObject;
 	}
 
-	@Override
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;

@@ -1070,13 +1070,13 @@ public class DeviceInfo implements com.mendix.systemwideinterfaces.core.IEntityP
 		getMendixObject().setValue(context, MemberNames.HasNotch.toString(), hasnotch);
 	}
 
-	@Override
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return deviceInfoMendixObject;
 	}
 
-	@Override
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;
