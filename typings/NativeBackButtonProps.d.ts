@@ -28,6 +28,8 @@ export interface NativeBackButtonPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
+    renderMode: "design" | "xray" | "structure";
+    translate: (text: string) => string;
     caption: string;
     darkMode: DarkModeEnum;
     onClickAction: {} | null;
