@@ -1,4 +1,4 @@
-import { ReactElement, createElement, useMemo } from "react";
+import { ReactElement, useMemo } from "react";
 import { Platform, Text, Pressable, View, Appearance, ImageStyle } from "react-native";
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import Svg, { Path } from "react-native-svg";
@@ -31,19 +31,20 @@ export function BackButton({
 }: BackButtonProps): ReactElement {
     const styles = mergeNativeStyles(defaultStyle, style);
 
-    let componentDarkMode = false;
-    switch (darkMode) {
-        case "dark":
-            componentDarkMode = true;
-            break;
+    const componentDarkMode = useMemo(() => {
+        switch (darkMode) {
+            case "dark":
+                return true;
+                break;
 
-        case "light":
-            componentDarkMode = false;
-            break;
+            case "light":
+                return false;
+                break;
 
-        default:
-            componentDarkMode = deviceDarkMode;
-    }
+            default:
+                return deviceDarkMode;
+        }
+    }, [darkMode]);
 
     const renderCaption = useMemo(() => {
         // Native button on Android has no caption

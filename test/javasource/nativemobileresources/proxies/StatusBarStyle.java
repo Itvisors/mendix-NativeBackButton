@@ -6,9 +6,9 @@ package nativemobileresources.proxies;
 
 public enum StatusBarStyle
 {
-	DefaultStyle("79195cc1-d2d4-4e65-8576-3022fe258d0a"),
-	LightContentStyle("941c3e08-0f29-4dbb-ac2c-9619dc270eee"),
-	DarkContentStyle("7592bb7e-3c5b-4220-94de-591d0c768f25");
+	DefaultStyle("d9a8f6bc-56dc-4760-a827-d52bbd5579fb"),
+	LightContentStyle("48b014f3-9495-4da5-b1e6-cd366c6279ec"),
+	DarkContentStyle("bbff0e8b-4100-431d-99b3-36199da2a450");
 
 	private final java.lang.String i18nCaptionKey;
 	
